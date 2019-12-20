@@ -20,15 +20,14 @@ export class AuthenticationService {
     }
 
     public login(loginModel: Login): LoggedInUser {
-        debugger;
-        let loggedInUser: LoggedInUser;
 
+        let loggedInUser: LoggedInUser;
         let activeUser = this.getLoggedInUser();
         if (!activeUser) {
 
             //Kullanıcı varmı doğrula
-            if (loginModel.username == "ozaytunctan", loginModel.password = "123") {
-
+            if (loginModel.username == "ozaytunctan" && loginModel.password == "123") {
+                
                 loggedInUser = {
                     username: loginModel.username,
                     email: loginModel.email,

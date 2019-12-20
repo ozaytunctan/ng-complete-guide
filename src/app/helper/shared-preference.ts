@@ -11,7 +11,7 @@ export class SharedPreference implements SharedService {
     private expireKeys: Map<string, Date> = new Map();
 
     constructor() {
-      //  this.clearExpireTime();
+       this.clearExpireTime();
     }
 
     put(key: string, value: any);

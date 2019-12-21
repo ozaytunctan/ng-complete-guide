@@ -18,6 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationGuard } from './service/authentication.guard';
 import { AuthenticationService } from './service/authentication-service';
 import { TextHighLight } from './directive/text-higlight/text-higlight.directive';
+import { UnlessDirective } from './directive/unless.directive';
+import { DropdownDirective } from './directive/dropdown/dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { TextHighLight } from './directive/text-higlight/text-higlight.directive
     LoginComponent,
     HomeComponent,
     PageNotFoundComponent,
-    TextHighLight
+    TextHighLight,
+    UnlessDirective,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,

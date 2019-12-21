@@ -11,10 +11,21 @@ import { ConstantApiParameter } from './common/constant.static';
 })
 export class AppComponent {
 
+  
+  loadedFeature = "recipe";
 
-
-  constructor(sharedPreference:SharedPreference){
+  constructor(sharedPreference: SharedPreference) {
 
   }
+
+  ngOnInit(): void {
+
+  }
+
+  onNavigate(feature: string) {
+    debugger;
+    this.loadedFeature = feature;
+  }
+
 
 }

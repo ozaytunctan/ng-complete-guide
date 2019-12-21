@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationGuard } from './service/authentication.guard';
 import { AuthenticationService } from './service/authentication-service';
+import { TextHighLight } from './directive/text-higlight/text-higlight.directive';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AuthenticationService } from './service/authentication-service';
     RecipeDetailComponent,
     LoginComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    TextHighLight
   ],
   imports: [
     BrowserModule,

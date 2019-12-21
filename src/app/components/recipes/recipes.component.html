@@ -6,9 +6,10 @@
         <app-recipe-detail [recipe-detail]="selectedRecipe" *ngIf="selectedRecipe; else notSelectedRecipe ">
         </app-recipe-detail>
         <ng-template #notSelectedRecipe>
-            <p>
+            <p class="alert alert-info">
                 Please a selected recipe
             </p>
+            <hr>
         </ng-template>
 
     </div>

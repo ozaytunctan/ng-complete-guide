@@ -4,6 +4,8 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AuthenticationGuard } from './service/authentication.guard';
+import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
+import { RecipesComponent } from './components/recipes/recipes.component';
 
 
 const routes: Routes = [
@@ -14,6 +16,8 @@ const routes: Routes = [
     path: 'home', canActivate: [AuthenticationGuard], component: HomeComponent,
     children: [{ path: 'anasayfa', component: HomeComponent }]
   },
+  { path: 'shopping-list', canActivate: [AuthenticationGuard], component: ShoppingListComponent },
+  { path: 'recipe', canActivate: [AuthenticationGuard], component: RecipesComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

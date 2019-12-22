@@ -3,17 +3,21 @@ import { Directive, Input, ElementRef, ViewContainerRef, TemplateRef } from '@an
 @Directive({
   selector: '[show]'
 })
-export class UnlessDirective {
+export class ShowDirective {
+
+  hasView: boolean = false;
   /**
    * Selector ile aynı isimde olalıdır. 
    * using *show="boolean" hide,show
    */
   @Input() set show(condition: boolean) {
-    if (condition) {
+    if (condition && !this.hasView) {
       this.vcRef.createEmbeddedView(this.tRef);
+      this.hasView=true;
     }
-    else {
-      this.vcRef.clear();
+    else if(!condition && this.hasView) {
+      this.vcRef.createEmbeddedView(this.tRef);
+      this.hasView=false;
     }
   }
   /**

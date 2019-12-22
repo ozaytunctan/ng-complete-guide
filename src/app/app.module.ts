@@ -20,6 +20,7 @@ import { AuthenticationService } from './service/authentication-service';
 import { TextHighLight } from './directive/text-higlight/text-higlight.directive';
 import { UnlessDirective } from './directive/unless.directive';
 import { DropdownDirective } from './directive/dropdown/dropdown.directive';
+import { ShowDirective } from './directive/show.directive';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { DropdownDirective } from './directive/dropdown/dropdown.directive';
     HomeComponent,
     PageNotFoundComponent,
     TextHighLight,
-    UnlessDirective,
+    ShowDirective,
     DropdownDirective
   ],
   imports: [

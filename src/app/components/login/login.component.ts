@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/service/authentication-service';
 import { Login } from 'src/app/model/login.model';
 import { LoginType } from 'src/app/model/enums/login-type.enum';
@@ -34,12 +34,13 @@ export class LoginComponent implements OnInit {
 
   initialize() {
     this.loginForm = this.loginBuilder.group({
-      username: new FormControl(''),
-      password: new FormControl('')
+      username: new FormControl('',[Validators.required]),
+      password: new FormControl('',[Validators.required])
     });
   }
   login() {
-
+    debugger
+    console.log(this.loginForm);
     if (this.loginForm.valid) {
       let login: Login = {
         username: this.loginForm.controls.username.value,

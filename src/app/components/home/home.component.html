@@ -1,16 +1,21 @@
-
 <div class="container">
         <div class="row">
             <ul class="nav nav-tabs">
-                <li role="presentation" class="active" ><a href="/recipe">Recipe</a></li>
-                <li role="presentation"><a routerLink="/shopping-list">Shopping List</a></li>
+                <li role="presentation" routerLinkActive="active" 
+                                        [routerLinkActiveOptions]="{exact:true}">
+                    <a routerLink="/recipe">Recipe</a>
+                </li>
+                <li role="presentation" 
+                    routerLinkActive="active">
+                    <a routerLink="/shopping-list">Shopping List</a>
+                </li>
             </ul>
         </div>
     
         <div class="row">
-          <div class="col-xs-12">
-              <router-outlet></router-outlet>
-          </div>
+            <div class="col-xs-12">
+                Testttttssss
+            </div>
         </div>
     
     </div>

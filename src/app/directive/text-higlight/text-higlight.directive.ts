@@ -1,4 +1,11 @@
-import { Directive, ElementRef, Renderer2, OnInit, HostListener, HostBinding, Input } from '@angular/core';
+import {
+    Directive,
+    ElementRef,
+    Renderer2, OnInit,
+    HostListener,
+    HostBinding,
+    Input
+} from '@angular/core';
 
 
 @Directive({
@@ -7,15 +14,15 @@ import { Directive, ElementRef, Renderer2, OnInit, HostListener, HostBinding, In
 export class TextHighLight implements OnInit {
 
     @Input() defaultColor: string = "transparent";
-    
-   // @Input() highLightColor: string = "blue";
+
+    // @Input() highLightColor: string = "blue";
 
     @Input('textHiglight') highLightColor: string = "blue";
 
 
+   
 
-    
-    
+
     @HostBinding('style.backgroundColor') backgroundColor: string = 'transparent';
 
     constructor(private elemRef: ElementRef, private rendered: Renderer2) {

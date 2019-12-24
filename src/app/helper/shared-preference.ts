@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { SharedService } from './shared.service';
+
 
 
 @Injectable({
@@ -11,7 +12,7 @@ export class SharedPreference implements SharedService {
     private expireKeys: Map<string, Date> = new Map();
 
     constructor() {
-       this.clearExpireTime();
+        this.clearExpireTime();
     }
 
     put(key: string, value: any);
@@ -48,7 +49,6 @@ export class SharedPreference implements SharedService {
     private removeLocalStorageByExpireDate() {
         let now: Date = new Date();
         this.expireKeys.forEach((value, key) => {
-            console.log(value < now);
             if (value < now) {
                 this.remove(key);
                 this.expireKeys.delete(key);

@@ -10,13 +10,19 @@ import { RecipesComponent } from './components/recipes/recipes.component';
 
 const routes: Routes = [
   /**Other Match navigate page */
+  
   { path: '', redirectTo: "/login", pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {
-    path: 'home', canActivate: [AuthenticationGuard], component: HomeComponent,
-    children: [{ path: 'anasayfa', component: HomeComponent }]
+    path: 'home',
+    canActivate: [AuthenticationGuard], 
+    canActivateChild: [AuthenticationGuard],
+    component: HomeComponent,
+    children: [
+      { path: 'anasayfa', component: HomeComponent }
+    ]
   },
-  { path: 'shopping-list', canActivate: [AuthenticationGuard], component: ShoppingListComponent },
+  { path: 'shopping-list',  canActivate: [AuthenticationGuard], component: ShoppingListComponent },
   { path: 'recipe', canActivate: [AuthenticationGuard], component: RecipesComponent },
   { path: '**', component: PageNotFoundComponent }
 ];

@@ -19,10 +19,6 @@ export class TextHighLight implements OnInit {
 
     @Input('textHiglight') highLightColor: string = "blue";
 
-
-   
-
-
     @HostBinding('style.backgroundColor') backgroundColor: string = 'transparent';
 
     constructor(private elemRef: ElementRef, private rendered: Renderer2) {

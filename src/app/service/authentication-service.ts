@@ -29,7 +29,7 @@ export class AuthenticationService implements OnInit {
     isAuthenticated() {
         const promise = new Promise((resolve, reject) => {
             setTimeout(() => {
-                resolve(this.loggedIn && this.getLoggedInUser());
+                resolve(this.loggedIn || this.getLoggedInUser());
             }, 800);
         });
         return promise;
@@ -38,7 +38,7 @@ export class AuthenticationService implements OnInit {
 
     public login(loginModel: Login): LoggedInUser {
 
-        if (!this.loggedIn) {
+        if (!this.loggedIn || this.getLoggedInUser()) {
             //Kullanıcı varmı doğrula
             if (loginModel.username == "ozaytunctan" && loginModel.password == "123") {
 

@@ -9,8 +9,6 @@ import { ShoppingListService } from './shopping-list.service';
 export class RecipeService {
 
 
-  selectedRecipe = new EventEmitter<Recipe>();
-
   recipes: Recipe[] = [
     new Recipe("Börek", 'Bilice börek ',
       'https://i4.hurimg.com/i/hurriyet/75/1500x844/5ab8c3f5c9de3d234835a917.jpg',
@@ -37,6 +35,9 @@ export class RecipeService {
 
   getRecipes() {
     return this.recipes.slice();
+  }
+  getRecipe(id:number){
+   return this.recipes[id];
   }
 
   addIngredientsShoppingList(ingredients: Ingredient[]) {

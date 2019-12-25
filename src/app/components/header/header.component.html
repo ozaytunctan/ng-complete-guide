@@ -10,18 +10,25 @@
 
         <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true">
             <ul class="nav navbar-nav">
-                <li><a  [routerLink]="['recipe']">Recipes</a></li>
-                <li><a  [routerLink]="['shopping-list']">Shopping List</a></li>
+                <li routerLinkActive="active" routerLink="/recipes"><a>Recipes</a></li>
+                <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a>Sepetim <span class="badge badge-pill badge-primary"
+                            style="background-color:rgb(41, 96, 199);">5</span></a>
+                </li>
                 <li class="dropdown" dropdown>
-                    <a class="dropdown-toggle" id="dropdownMenuButton" role="button" data-toggle="dropdown"
-                        aria-expanded="false">Manage<span class="caret"></span></a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li> <a class="dropdown-item" href="#">Save Data</a></li>
-                        <li><a href="#">Fetch Data</a></li>
+                    <a class="dropdown-toggle" role="button" >Manage<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li> <a style="cursor: pointer;">Save Data</a></li>
+                        <li><a style="cursor: pointer;">Fetch Data</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a class="">Login</a>
+                </li>
+
             </ul>
         </div>
     </div>

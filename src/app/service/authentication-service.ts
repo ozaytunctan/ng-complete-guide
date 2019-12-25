@@ -28,9 +28,9 @@ export class AuthenticationService implements OnInit {
     }
     isAuthenticated() {
         const promise = new Promise((resolve, reject) => {
-            setTimeout(() => {
+            // setTimeout(() => {
                 resolve(this.loggedIn || this.getLoggedInUser());
-            }, 800);
+            // }, 10);
         });
         return promise;
 

@@ -19,6 +19,7 @@ import { AuthenticationService } from './service/authentication-service';
 import { TextHighLight } from './directive/text-higlight/text-higlight.directive';
 import { DropdownDirective } from './directive/dropdown/dropdown.directive';
 import { ShowDirective } from './directive/show.directive';
+import { RecipeStartComponent } from './components/recipes/recipe-start/recipe-start.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ShowDirective } from './directive/show.directive';
     PageNotFoundComponent,
     TextHighLight,
     ShowDirective,
-    DropdownDirective
+    DropdownDirective,
+    RecipeStartComponent
   ],
   imports: [
     BrowserModule,

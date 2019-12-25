@@ -6,24 +6,34 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { AuthenticationGuard } from './service/authentication.guard';
 import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
+import { RecipeStartComponent } from './components/recipes/recipe-start/recipe-start.component';
+import { RecipeDetailComponent } from './components/recipes/recipe-detail/recipe-detail.component';
 
 
 const routes: Routes = [
   /**Other Match navigate page */
-  
-  { path: '', redirectTo: "/login", pathMatch: 'full' },
+
+  { path: '', redirectTo: "/recipes", pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {
     path: 'home',
-    canActivate: [AuthenticationGuard], 
+    canActivate: [AuthenticationGuard],
     canActivateChild: [AuthenticationGuard],
     component: HomeComponent,
     children: [
       { path: 'anasayfa', component: HomeComponent }
     ]
   },
-  { path: 'shopping-list',  canActivate: [AuthenticationGuard], component: ShoppingListComponent },
-  { path: 'recipe', canActivate: [AuthenticationGuard], component: RecipesComponent },
+  { path: 'shopping-list', canActivate: [AuthenticationGuard], component: ShoppingListComponent },
+
+  {
+    path: 'recipes', canActivate: [AuthenticationGuard], component: RecipesComponent,
+    children: [
+      { path: '', component: RecipeStartComponent },
+      { path: ':id', component: RecipeDetailComponent }
+    ]
+
+  },
   { path: '**', component: PageNotFoundComponent }
 ];
 

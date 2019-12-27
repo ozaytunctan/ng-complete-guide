@@ -20,6 +20,8 @@ import { TextHighLight } from './directive/text-higlight/text-higlight.directive
 import { DropdownDirective } from './directive/dropdown/dropdown.directive';
 import { ShowDirective } from './directive/show.directive';
 import { RecipeStartComponent } from './components/recipes/recipe-start/recipe-start.component';
+import { RecipeEditComponent } from './components/recipes/recipe-edit/recipe-edit.component';
+import { RecipeResolver } from './resolver/recipe.resolver';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { RecipeStartComponent } from './components/recipes/recipe-start/recipe-s
     RecipeItemComponent,
     ShoppingListComponent,
     ShoppingEditComponent,
+    RecipeEditComponent,
     RecipeDetailComponent,
     LoginComponent,
     HomeComponent,
@@ -44,9 +47,10 @@ import { RecipeStartComponent } from './components/recipes/recipe-start/recipe-s
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+  
   ],
-  providers: [AuthenticationService,AuthenticationGuard],
+  providers: [AuthenticationService,AuthenticationGuard,RecipeResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

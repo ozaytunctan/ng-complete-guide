@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SharedPreference } from './helper/shared-preference';
-import { ConstantApiParameter } from './common/constant.static';
+import { ServiceAsync } from './service/service-async.service';
 
 
 
@@ -14,12 +14,11 @@ export class AppComponent {
   
   loadedFeature = "recipe";
 
-  constructor(sharedPreference: SharedPreference) {
+  constructor(sharedPreference: SharedPreference,private serviceAsync:ServiceAsync) {
 
   }
 
   ngOnInit(): void {
-
   }
 
   onNavigate(feature: string) {

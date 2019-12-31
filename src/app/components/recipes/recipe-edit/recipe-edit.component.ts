@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { Component, OnInit, OnChanges } from '@angular/core';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { RecipeService } from 'src/app/service/recipe.service';
 import { Recipe } from 'src/app/model/recipe.model';
@@ -11,43 +11,51 @@ import { Recipe } from 'src/app/model/recipe.model';
 })
 export class RecipeEditComponent implements OnInit {
 
+
   id: number;
 
   editRecipeForm: FormGroup;
 
   editMode: boolean = false;
 
-  recipe:Recipe;
 
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private recipeService: RecipeService) {
+  //  this.formBuilder = this.fb;
   }
 
   ngOnInit() {
-    debugger;
-
-    this.route
-    .data
-    .subscribe((recipe:Recipe) => {
-      this.recipe = recipe;
-    })
-    this.initializeForm();
-  
+    this.loadRecipe();
+    
   }
 
-  initializeForm() {
-    console.log(this.recipe);
+  loadRecipe() {
+    this.route
+      .params.subscribe((params:Params) => {
+        let id:number=params['id'];
+        this.initializeForm(this.recipeService.getRecipe(id));
+      });
+  }
 
-    if (!this.recipe)
-      this.recipe = new Recipe("", "", "", []);
+  initializeForm(recipe:Recipe) {
+    if (!recipe)
+      recipe = new Recipe("", "", "", []);
 
     this.editRecipeForm = this.fb.group({
-      name: new FormControl(this.recipe.name),
-      description: new FormControl(this.recipe.description),
-      imagePath: new FormControl(this.recipe.imagePath),
+      
+      name: new FormControl(recipe.name, [Validators.required]),
+     
+      description: [recipe.description, [Validators.required]],
+     
+      imagePath: [recipe.imagePath, [Validators.required]]
     });
+  }
+
+  onAddRecipe(){
+
+  
 
   }
 }

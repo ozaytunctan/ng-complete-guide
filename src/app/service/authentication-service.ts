@@ -33,7 +33,6 @@ export class AuthenticationService implements OnInit {
             // }, 10);
         });
         return promise;
-
     }
 
     public login(loginModel: Login): LoggedInUser {

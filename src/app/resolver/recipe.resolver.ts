@@ -22,13 +22,10 @@ export class RecipeResolver implements Resolve<Recipe>{
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Recipe | Observable<Recipe> | Promise<Recipe> {
-
-        //    route.params.subscribe((params: Params) => {
-        let recipeId: number = route.params['id'];
+        let recipeId: number = +route.params['id'];
+        debugger;
         if (!recipeId)
             this.recipe = this.recipeService.getRecipe(recipeId);
-        // })
-
         return this.recipe;
     }
 

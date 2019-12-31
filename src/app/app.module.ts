@@ -22,6 +22,8 @@ import { ShowDirective } from './directive/show.directive';
 import { RecipeStartComponent } from './components/recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './components/recipes/recipe-edit/recipe-edit.component';
 import { RecipeResolver } from './resolver/recipe.resolver';
+import { ServiceAsync } from './service/service-async.service';
+import { CardComponent } from './components/commons/card/card.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { RecipeResolver } from './resolver/recipe.resolver';
     TextHighLight,
     ShowDirective,
     DropdownDirective,
-    RecipeStartComponent
+    RecipeStartComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,7 @@ import { RecipeResolver } from './resolver/recipe.resolver';
     ReactiveFormsModule,
   
   ],
-  providers: [AuthenticationService,AuthenticationGuard,RecipeResolver],
+  providers: [AuthenticationService,AuthenticationGuard,RecipeResolver,ServiceAsync],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

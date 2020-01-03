@@ -26,7 +26,8 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="">Login</a>
+                    <a [routerLink]="['/login']" *ngIf="!loggedIn">Login</a>
+                    <a (click)="onLogout()"  *ngIf="loggedIn">Logout</a>
                 </li>
 
             </ul>

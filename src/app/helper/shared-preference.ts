@@ -20,7 +20,6 @@ export class SharedPreference implements SharedService {
     put(key: string, value: any, expireTime: number);
 
     put(key: any, value: any, expireTime?: any) {
-        debugger;
         if (expireTime) {
             let now: Date = new Date();
             now.setMilliseconds(now.getMilliseconds() + expireTime);
@@ -34,7 +33,6 @@ export class SharedPreference implements SharedService {
         return null;
     }
     remove(key: string) {
-        debugger;
         if (key)
             localStorage.removeItem(key);
     }

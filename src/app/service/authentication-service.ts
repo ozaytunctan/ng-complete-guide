@@ -1,13 +1,10 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Login } from '../model/login.model';
-import { HttpClient } from '@angular/common/http';
 import { LoggedInUser } from '../model/logged-in-user.model';
-import { UserRole } from '../model/user-role';
 import { SharedPreference } from '../helper/shared-preference';
 import { ConstantParameter } from '../common/constant-parameter';
-import { AppComponent } from '../app.component';
-import { RecipeService } from './recipe.service';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 
 @Injectable({
@@ -17,6 +14,8 @@ export class AuthenticationService implements OnInit {
 
 
     loggedIn: boolean = false;
+
+    changedLoggedIn=new Subject<boolean>();
 
     constructor(
         private sharedPreference: SharedPreference,
@@ -36,7 +35,6 @@ export class AuthenticationService implements OnInit {
     }
 
     public login(loginModel: Login): LoggedInUser {
-
         if (!this.loggedIn || this.getLoggedInUser()) {
             //Kullanıcı varmı doğrula
             if (loginModel.username == "ozaytunctan" && loginModel.password == "123") {
@@ -55,6 +53,7 @@ export class AuthenticationService implements OnInit {
                 this.loggedIn = true;
             }
         }
+        this.changedLoggedIn.next(this.loggedIn);
         return this.getLoggedInUser();
 
     }
@@ -62,12 +61,12 @@ export class AuthenticationService implements OnInit {
     public logout() {
         this.loggedIn = false;
         this.sharedPreference.remove(ConstantParameter.LOGGED_IN_USER);
+        this.changedLoggedIn.next(this.loggedIn);
         this.router.navigate(['/login']);
-        console.log("logout() ...");
 
     }
     public isLoggedIn(): boolean {
-        return this.loggedIn;
+        return this.loggedIn || this.getLoggedInUser()!=undefined;
     }
 
     public getLoggedInUser(): any {

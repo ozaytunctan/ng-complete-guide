@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { RecipeService } from 'src/app/service/recipe.service';
 import { Recipe } from 'src/app/model/recipe.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-recipe-edit',
   templateUrl: './recipe-edit.component.html',
   styleUrls: ['./recipe-edit.component.css']
 })
-export class RecipeEditComponent implements OnInit {
+export class RecipeEditComponent implements OnInit, OnDestroy {
+
 
   id: number;
 
@@ -17,7 +19,9 @@ export class RecipeEditComponent implements OnInit {
 
   editMode: boolean = false;
 
-  recipe:Recipe;
+  recipe: Recipe;
+
+  recipeRouteSubscription: Subscription;
 
   constructor(
     private fb: FormBuilder,
@@ -26,20 +30,17 @@ export class RecipeEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    debugger;
 
-    this.route
-    .data
-    .subscribe((recipe:Recipe) => {
-      this.recipe = recipe;
-    })
+    this.recipeRouteSubscription = this.route
+      .data
+      .subscribe((recipe: Recipe) => {
+        this.recipe = recipe;
+      })
     this.initializeForm();
-  
+
   }
 
   initializeForm() {
-    console.log(this.recipe);
-
     if (!this.recipe)
       this.recipe = new Recipe("", "", "", []);
 
@@ -50,4 +51,10 @@ export class RecipeEditComponent implements OnInit {
     });
 
   }
+
+  ngOnDestroy(): void {
+    this.recipeRouteSubscription.unsubscribe();
+  }
+
+
 }

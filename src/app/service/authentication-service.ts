@@ -64,8 +64,6 @@ export class AuthenticationService implements OnInit {
         this.loggedIn = false;
         this.sharedPreference.remove(ConstantParameter.LOGGED_IN_USER);
         this.router.navigate(['/login']);
-        console.log("logout() ...");
-
     }
     public isLoggedIn(): boolean {
         return this.loggedIn;

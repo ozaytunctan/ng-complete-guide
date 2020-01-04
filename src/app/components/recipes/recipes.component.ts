@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RecipeService } from 'src/app/service/recipe.service';
-import { Recipe } from 'src/app/model/recipe.model';
 import { AuthenticationService } from 'src/app/service/authentication-service';
 
 @Component({
@@ -16,11 +15,7 @@ export class RecipesComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.recipeService.selectedRecipe.subscribe(
-    //   (recipe: Recipe) => {
-    //     this.selectedRecipe = recipe
-    //   }
-    // );
+    
   }
 
 }

@@ -15,7 +15,7 @@ export class AuthenticationService implements OnInit {
 
     loggedIn: boolean = false;
 
-    changedLoggedIn=new Subject<boolean>();
+    changedLoggedIn = new Subject<boolean>();
 
     constructor(
         private sharedPreference: SharedPreference,
@@ -23,12 +23,12 @@ export class AuthenticationService implements OnInit {
 
     }
     ngOnInit(): void {
-    
+
     }
     isAuthenticated() {
         const promise = new Promise((resolve, reject) => {
             // setTimeout(() => {
-                resolve(this.loggedIn || this.getLoggedInUser());
+            resolve(this.loggedIn || this.getLoggedInUser());
             // }, 10);
         });
         return promise;
@@ -63,10 +63,10 @@ export class AuthenticationService implements OnInit {
         this.sharedPreference.remove(ConstantParameter.LOGGED_IN_USER);
         this.changedLoggedIn.next(this.loggedIn);
         this.router.navigate(['/login']);
-
     }
+
     public isLoggedIn(): boolean {
-        return this.loggedIn || this.getLoggedInUser()!=undefined;
+        return this.loggedIn || this.getLoggedInUser() != undefined;
     }
 
     public getLoggedInUser(): any {

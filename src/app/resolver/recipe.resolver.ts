@@ -23,7 +23,6 @@ export class RecipeResolver implements Resolve<Recipe>{
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Recipe | Observable<Recipe> | Promise<Recipe> {
         let recipeId: number = +route.params['id'];
-        debugger;
         if (!recipeId)
             this.recipe = this.recipeService.getRecipe(recipeId);
         return this.recipe;

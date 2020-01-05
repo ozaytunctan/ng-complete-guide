@@ -39,13 +39,11 @@ export class LoginComponent implements OnInit {
     });
   }
   login() {
-    debugger
-    console.log(this.loginForm);
     if (this.loginForm.valid) {
       let login: Login = {
-        username: this.loginForm.controls.username.value,
-        password: this.loginForm.controls.password.value,
-        email: this.loginForm.controls.username.value,
+        username: this.loginForm.value.username,
+        password: this.loginForm.value.password,
+        email: this.loginForm.value.username,
         status: LoginType.USER
       };
       let loggedInUser: LoggedInUser = this.auth.login(login);

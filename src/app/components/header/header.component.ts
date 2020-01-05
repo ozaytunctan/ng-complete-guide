@@ -1,5 +1,5 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
 import { AuthenticationService } from 'src/app/service/authentication-service';
 
 @Component({
@@ -7,13 +7,15 @@ import { AuthenticationService } from 'src/app/service/authentication-service';
     templateUrl: './header.component.html',
     styleUrls: ["./header.component.css"]
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit ,OnDestroy{
 
     collapsed = true;
     loggedIn: boolean = false;
 
     @Output()
     featureSelected = new EventEmitter<string>();
+
+    changedLoggedInSubscription:Subscription;
 
     constructor(private auth: AuthenticationService) {
     }
@@ -22,13 +24,18 @@ export class HeaderComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.auth.changedLoggedIn.subscribe((authenticated: boolean) => {
+        this.loggedIn=this.auth.isLoggedIn();
+       this.changedLoggedInSubscription= this.auth.changedLoggedIn.subscribe((authenticated: boolean) => {
             this.loggedIn = authenticated;
         });
     }
     onLogout() {
         this.loggedIn = false;
         this.auth.logout();
+    }
+
+    ngOnDestroy(){
+        this.changedLoggedInSubscription.unsubscribe();
     }
 
 

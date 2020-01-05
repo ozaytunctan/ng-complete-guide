@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RecipeService } from 'src/app/service/recipe.service';
-import { AuthenticationService } from 'src/app/service/authentication-service';
 
 @Component({
   selector: 'app-recipes',
@@ -10,8 +9,7 @@ import { AuthenticationService } from 'src/app/service/authentication-service';
 export class RecipesComponent implements OnInit {
 
 
-  constructor(private recipeService: RecipeService,private auth:AuthenticationService) {
-    console.log(this.auth);
+  constructor(private recipeService: RecipeService) {
   }
 
   ngOnInit() {

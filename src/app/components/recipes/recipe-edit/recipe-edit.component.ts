@@ -28,7 +28,6 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.initForm();
-
     this.recipeRouteSubscription = this.route
       .params.subscribe((params: Params) => {
         this.id = +params['id'];
@@ -46,7 +45,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     var recipeDescription = '';
     var recipeIngredients = new FormArray([]);
 
-    if (this.editMode && this.id > 0) {
+    if (this.editMode && this.id >= 0) {
       recipeName = this.recipe.name;
       recipeImagePath = this.recipe.imagePath;
       recipeDescription = this.recipe.description;
@@ -79,7 +78,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
       recipeValue.imagePath,
       recipeValue.ingredients
     );
-    if (this.editMode && this.id > 0) {
+    if (this.editMode && this.id >= 0) {
       //updated
       this.recipeService.updateRecipe(this.id, newRecipe);
     }

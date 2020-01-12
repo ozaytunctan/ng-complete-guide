@@ -1,13 +1,21 @@
 <div class="row">
     <div class="col-xs-12">
         <button class="btn btn-success" type="button" (click)="onAddRecipeItem()">New Recipe</button>
+        <hr>
+        <span>Filter Recipe <input type="text"
+                              placeholder="Yemek tarifi ismi ile arama yapın..." 
+                              class="form-control"
+                              [(ngModel)]="filterByName"
+                              >
+            
+        </span>
     </div>
 </div>
 <hr>
 
 <div class="row">
     <div class="col-xs-12">
-        <app-recipe-item *ngFor="let recipe of recipes;let recipeId=index "
+        <app-recipe-item *ngFor="let recipe of recipes | filter:filterByName:'name'; let recipeId=index; "
          [recipe-item]="recipe"  
          [recipe-id]="recipeId"
          >

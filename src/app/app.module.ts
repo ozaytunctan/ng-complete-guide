@@ -12,7 +12,7 @@ import { RecipeDetailComponent } from './components/recipes/recipe-detail/recipe
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationGuard } from './service/authentication.guard';
 import { AuthenticationService } from './service/authentication-service';
@@ -24,6 +24,12 @@ import { RecipeEditComponent } from './components/recipes/recipe-edit/recipe-edi
 import { RecipeResolver } from './resolver/recipe.resolver';
 import { ServiceAsync } from './service/service-async.service';
 import { CardComponent } from './components/commons/card/card.component';
+import { BoxComponent } from './components/shared/box/box.component';
+import { ShortenPipe } from './pipes/shorten.pipe';
+import { FilterPipe } from './pipes/filter-pipe';
+import { ShoppingListService } from './service/shopping-list.service';
+import { RecipeService } from './service/recipe.service';
+import { AuthUserInterceptor } from 'src/interceptors/auth-user.interceptor';
 
 @NgModule({
   declarations: [
@@ -43,17 +49,32 @@ import { CardComponent } from './components/commons/card/card.component';
     ShowDirective,
     DropdownDirective,
     RecipeStartComponent,
-    CardComponent
+    CardComponent,
+    BoxComponent,
+    ShortenPipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   
   ],
-  providers: [AuthenticationService,AuthenticationGuard,RecipeResolver,ServiceAsync],
+  providers: [
+    AuthenticationService,
+    AuthenticationGuard,
+    RecipeResolver,
+    ServiceAsync,
+    RecipeService,
+    ShoppingListService,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:AuthUserInterceptor,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

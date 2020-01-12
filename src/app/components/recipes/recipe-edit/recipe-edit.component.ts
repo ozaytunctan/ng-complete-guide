@@ -35,8 +35,6 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
         this.recipe = this.recipeService.getRecipe(this.id);
         this.initForm();
       });
-
-
   }
   
   initForm() {
@@ -70,10 +68,14 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
 
   }
 
+  getControls() {
+    return (<FormArray>this.editRecipeForm.get('ingredients')).controls;
+  }
+
   onSubmit() {
     var recipeValue = this.editRecipeForm.value;
-    const newRecipe = new Recipe(
-      recipeValue.name,
+    var newRecipe = new Recipe(
+      recipeValue.name,                                       
       recipeValue.description,
       recipeValue.imagePath,
       recipeValue.ingredients

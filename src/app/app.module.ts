@@ -30,6 +30,8 @@ import { FilterPipe } from './pipes/filter-pipe';
 import { ShoppingListService } from './service/shopping-list.service';
 import { RecipeService } from './service/recipe.service';
 import { AuthUserInterceptor } from 'src/interceptors/auth-user.interceptor';
+import {FlexLayoutModule} from '@angular/flex-layout'
+
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { AuthUserInterceptor } from 'src/interceptors/auth-user.interceptor';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FlexLayoutModule
+    
   
   ],
   providers: [

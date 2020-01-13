@@ -42,22 +42,20 @@ export class RecipeService {
 
   getRecipes() {
     
-    debugger;
-      this.http.get<ApiResponse<Recipe[]>>
-        ("http://localhost:9090/Services/rest/api/v1/getRecipes")
-        .pipe(
-          map(
-            (responseData: ApiResponse<Recipe[]>) => { return responseData.result; }
-          ),
-          catchError(error => { 
-            console.log(error);
-            return throwError(error); 
-          })
-        ).subscribe(data=>{
-          console.log(data);
-        });
-    
-
+      // this.http.get<ApiResponse<Recipe[]>>
+      //   ("http://localhost:9090/Services/rest/api/v1/getRecipes")
+      //   .pipe(
+      //     map(
+      //       (responseData: ApiResponse<Recipe[]>) => { return responseData.result; }
+      //     ),
+      //     catchError(error => { 
+      //       console.log(error);
+      //       return throwError(error); 
+      //     })
+      //   ).subscribe(data=>{
+      //     console.log(data);
+      //   });
+  
     return this.recipes.slice();
   }
 

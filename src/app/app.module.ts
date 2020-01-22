@@ -30,7 +30,8 @@ import { FilterPipe } from './pipes/filter-pipe';
 import { ShoppingListService } from './service/shopping-list.service';
 import { RecipeService } from './service/recipe.service';
 import { AuthUserInterceptor } from 'src/interceptors/auth-user.interceptor';
-
+import {MatCardModule} from '@angular/material'
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,10 +57,12 @@ import { AuthUserInterceptor } from 'src/interceptors/auth-user.interceptor';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatCardModule
   
   ],
   providers: [

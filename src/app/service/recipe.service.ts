@@ -24,7 +24,7 @@ export class RecipeService {
         new Ingredient("5 adet yufka", 10)
       ]
     ),
-
+    
     new Recipe("Tost", 'Basit Tost Tarifi',
       'https://i4.hurimg.com/i/hurriyet/75/1500x844/5c94ed86c03c0e3538e8b019.jpg',
       [

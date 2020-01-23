@@ -24,7 +24,6 @@ import { RecipeEditComponent } from './components/recipes/recipe-edit/recipe-edi
 import { RecipeResolver } from './resolver/recipe.resolver';
 import { ServiceAsync } from './service/service-async.service';
 import { CardComponent } from './components/commons/card/card.component';
-import { BoxComponent } from './components/shared/box/box.component';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { FilterPipe } from './pipes/filter-pipe';
 import { ShoppingListService } from './service/shopping-list.service';
@@ -32,7 +31,8 @@ import { RecipeService } from './service/recipe.service';
 import { AuthUserInterceptor } from 'src/interceptors/auth-user.interceptor';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { AlertComponent } from './components/shared/entry-component/alert/alert.component'
-
+import {MatCardModule} from '@angular/material'
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -53,19 +53,20 @@ import { AlertComponent } from './components/shared/entry-component/alert/alert.
     DropdownDirective,
     RecipeStartComponent,
     CardComponent,
-    BoxComponent,
     ShortenPipe,
     FilterPipe,
     AlertComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    FlexLayoutModule
-    
+    FlexLayoutModule,
+    MatCardModule
+
   
   ],
   providers: [

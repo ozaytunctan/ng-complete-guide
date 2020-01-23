@@ -30,7 +30,8 @@ import { FilterPipe } from './pipes/filter-pipe';
 import { ShoppingListService } from './service/shopping-list.service';
 import { RecipeService } from './service/recipe.service';
 import { AuthUserInterceptor } from 'src/interceptors/auth-user.interceptor';
-import {FlexLayoutModule} from '@angular/flex-layout'
+import {FlexLayoutModule} from '@angular/flex-layout';
+import { AlertComponent } from './components/shared/entry-component/alert/alert.component'
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import {FlexLayoutModule} from '@angular/flex-layout'
     CardComponent,
     BoxComponent,
     ShortenPipe,
-    FilterPipe
+    FilterPipe,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

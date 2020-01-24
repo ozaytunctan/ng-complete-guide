@@ -31,7 +31,7 @@ import { RecipeService } from './service/recipe.service';
 import { AuthUserInterceptor } from 'src/interceptors/auth-user.interceptor';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { AlertComponent } from './components/shared/entry-component/alert/alert.component'
-import {MatCardModule} from '@angular/material'
+import {MatCardModule, MatTabsModule, MatIconModule} from '@angular/material'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
 @NgModule({
@@ -65,7 +65,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    MatCardModule
+    MatCardModule,
+    MatTabsModule,
+    MatIconModule
 
   
   ],

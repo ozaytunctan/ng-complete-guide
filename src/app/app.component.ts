@@ -11,20 +11,23 @@ import { ServiceAsync } from './service/service-async.service';
 })
 export class AppComponent {
 
-  
-  loadedFeature = "recipe";
 
-  constructor(sharedPreference: SharedPreference,private serviceAsync:ServiceAsync) {
+  loadedFeature =  'recipe' ;
+
+  constructor(sharedPreference: SharedPreference, private serviceAsync: ServiceAsync) {
 
   }
 
   ngOnInit(): void {
+
   }
 
   onNavigate(feature: string) {
-    debugger;
     this.loadedFeature = feature;
   }
+
+
+
 
 
 }

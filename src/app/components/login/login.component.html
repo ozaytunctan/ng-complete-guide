@@ -1,6 +1,7 @@
 <div class="container">
     <div class="row">
-        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2" fxLayout="row " fxLayout.md="10" fxLayoutAlign="center" style="margin-top: 60px">
+          <mat-card>
             <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
 
                 <div class="text-center mb-4">
@@ -14,10 +15,10 @@
                 <div class="form-group">
                     <label for="username">User Name</label>
                     <input type="text" id="username" class="form-control"
-                        [ngClass]="{'is-invalid':loginForm.controls.username?.errors}" placeholder="User name"
+                        [ngClass]="{'is-invalid':loginForm.get('username')?.errors}" placeholder="User name"
                         autofocus="" formControlName="username">
-                    <div *ngIf="loginForm.controls.username?.errors && loginForm.controls.username.dirty">
-                        <span *ngIf="loginForm.controls.username.errors?.required"
+                    <div *ngIf="loginForm.controls.username?.errors && loginForm.get('username')?.errors.dirty">
+                        <span *ngIf="loginForm.get('username').errors?.required"
                             class="help-block err-msg-color">User Name is
                             required</span>
                     </div>
@@ -27,8 +28,8 @@
                     <label for="password">Password</label>
                     <input type="password" id="password" class="form-control" formControlName="password"
                         placeholder="Password">
-                    <div *ngIf="loginForm.controls.password?.errors">
-                        <span *ngIf="loginForm.controls.password.errors?.required && loginForm.controls.password.dirty"
+                    <div *ngIf="loginForm.get('password').errors">
+                        <span *ngIf="loginForm.get('password').errors?.required && loginForm.controls.password.dirty"
                             class="invalid-feedback err-msg-color">Password is
                             required</span>
                     </div>
@@ -43,6 +44,7 @@
                     in</button>
                 <p class="mt-5 mb-3 text-muted text-center">© 2017-2018</p>
             </form>
+          </mat-card>
         </div>
     </div>
 </div>

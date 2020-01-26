@@ -5,6 +5,8 @@ import { RecipeService } from 'src/app/service/recipe.service';
 import { Recipe } from 'src/app/model/recipe.model';
 import { Subscription, from } from 'rxjs';
 import { CustomValidators } from 'src/app/validators/custom.validators';
+import { MatDialogRef, MatDialog } from '@angular/material';
+import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -19,11 +21,20 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   recipe: Recipe;
   recipeRouteSubscription: Subscription;
 
+  matDialogRef: MatDialogRef<ConfirmDialogComponent>;
+
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private recipeService: RecipeService) {
+    private recipeService: RecipeService,
+    private dialog: MatDialog
+  ) {
+  }
+
+  openConfirmDialog() {
+    var message = "Yemek Tarifini güncelemek istediğinize eminmisiniz."
+    this.matDialogRef = this.dialog.open(ConfirmDialogComponent, { data: message, hasBackdrop: true });
   }
 
   ngOnInit() {
@@ -36,7 +47,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
         this.initForm();
       });
   }
-  
+
   initForm() {
     var recipeName = '';
     var recipeImagePath = '';
@@ -73,23 +84,27 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    var recipeValue = this.editRecipeForm.value;
-    var newRecipe = new Recipe(
-      recipeValue.name,                                       
-      recipeValue.description,
-      recipeValue.imagePath,
-      recipeValue.ingredients
-    );
-    if (this.editMode && this.id >= 0) {
-      //updated
-      this.recipeService.updateRecipe(this.id, newRecipe);
-    }
-    else {
-      //insert
-      this.recipeService.addRecipe(newRecipe);
-    }
-
-    this.onCancel();
+    this.openConfirmDialog();
+    this.matDialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        var recipeValue = this.editRecipeForm.value;
+        var newRecipe = new Recipe(
+          recipeValue.name,
+          recipeValue.description,
+          recipeValue.imagePath,
+          recipeValue.ingredients
+        );
+        if (this.editMode && this.id >= 0) {
+          //updated
+          this.recipeService.updateRecipe(this.id, newRecipe);
+        }
+        else {
+          //insert
+          this.recipeService.addRecipe(newRecipe);
+        }
+        this.onCancel();
+      }
+    });
   }
 
   ngOnDestroy(): void {

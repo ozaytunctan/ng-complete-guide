@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Kayıt Güncelleme Onay Ekranı</h1>
+
+<div mat-dialog-content>
+   <span>{{data}}</span>
+</div>
+
+<div mat-dialog-actions>
+    <div class="row">
+        <div class="dialog-buttons">
+            <button mat-raised-button  color="warn" (click)="onNoClick()">Hayır</button>
+            <button mat-raised-button  color="primary" [mat-dialog-close]="true" cdkFocusInitial>Evet</button>          
+        </div>
+    </div>
+  </div>

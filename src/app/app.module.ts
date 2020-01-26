@@ -30,9 +30,9 @@ import { ShoppingListService } from './service/shopping-list.service';
 import { RecipeService } from './service/recipe.service';
 import { AuthUserInterceptor } from 'src/interceptors/auth-user.interceptor';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import { AlertComponent } from './components/shared/entry-component/alert/alert.component'
-import {MatCardModule, MatTabsModule, MatIconModule} from '@angular/material'
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import {MatCardModule, MatTabsModule, MatIconModule, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule, MatFormField, MatFormFieldModule, MatButtonModule, MatButtonToggleModule} from '@angular/material'
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ConfirmDialogComponent } from './components/shared/confirm-dialog/confirm-dialog.component'
 
 @NgModule({
   declarations: [
@@ -55,8 +55,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
     CardComponent,
     ShortenPipe,
     FilterPipe,
-    AlertComponent
-  ],
+    ConfirmDialogComponent
+    ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -67,9 +67,17 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
     FlexLayoutModule,
     MatCardModule,
     MatTabsModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatButtonToggleModule
 
   
+  ],
+
+  entryComponents:[
+ConfirmDialogComponent
   ],
   providers: [
     AuthenticationService,
@@ -82,7 +90,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
       provide:HTTP_INTERCEPTORS,
       useClass:AuthUserInterceptor,
       multi:true
-    }
+    },
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],
   bootstrap: [AppComponent]
 })

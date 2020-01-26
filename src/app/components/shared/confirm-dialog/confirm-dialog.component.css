@@ -1,4 +1,7 @@
 .dialog-buttons{
-
     margin-right: 8px;
+}
+
+.mat-dialog-actions{
+    float: right;
 }

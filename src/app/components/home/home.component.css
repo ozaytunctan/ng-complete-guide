@@ -1,0 +1,29 @@
+
+.item{
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
+  box-shadow: #66afe9;
+}
+
+.item-1{
+  background: #337ab7;
+}
+
+.item-2{
+  background: #66afe9;
+}
+
+.item-3 {
+  background: #31b0d5;
+}
+
+.item-4{
+  background: #985f0d;
+}
+
+.item-5{
+  background: red;
+}
+
+

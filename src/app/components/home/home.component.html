@@ -1,49 +1,74 @@
 <!-- <div class="container">
         <div class="row">
             <ul class="nav nav-tabs">
-                <li role="presentation" routerLinkActive="active" 
+                <li role="presentation" routerLinkActive="active"
                                         [routerLinkActiveOptions]="{exact:true}">
                     <a routerLink="/recipe">Recipe</a>
                 </li>
-                <li role="presentation" 
+                <li role="presentation"
                     routerLinkActive="active">
                     <a routerLink="/shopping-list">Shopping List</a>
                 </li>
             </ul>
         </div>
-    
+
         <div class="row">
             <div class="col-xs-12">
                 Testttttssss
             </div>
         </div>
-    
+
     </div> -->
 
 
-    <mat-tab-group>
-        <mat-tab>
-          <ng-template mat-tab-label>
-            <mat-icon class="example-tab-icon"></mat-icon>
-            Recipes
-          </ng-template>
-          <app-recipes></app-recipes>
-        </mat-tab>
-      
-        <mat-tab>
-          <ng-template mat-tab-label>
-            <mat-icon class="example-tab-icon"></mat-icon>
-            Second
-          </ng-template>
-          Content 2
-        </mat-tab>
-      
-        <mat-tab>
-          <ng-template mat-tab-label>
-            <mat-icon class="example-tab-icon"></mat-icon>
-            Third
-          </ng-template>
-      
-          Content 3
-        </mat-tab>
-      </mat-tab-group>
+<!--  <mat-tab-group>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="example-tab-icon"></mat-icon>
+          Recipes
+        </ng-template>
+        <app-recipes></app-recipes>
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="example-tab-icon"></mat-icon>
+          Second
+        </ng-template>
+        Content 2
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon class="example-tab-icon"></mat-icon>
+          Third
+        </ng-template>
+
+        Content 3
+      </mat-tab>
+    </mat-tab-group>-->
+
+<div
+     class="container"
+     fxLayout
+     fxLayout.xs="column"
+     fxLayoutAlign="start"
+     fxLayoutGap="10px"
+     fxLayoutGap.xs="0">
+  <div class="item item-1" fxFlex="15%">Item 1</div>
+  <div class="item item-2" fxFlex="20%" fxFlexOrder="3">Item 2</div>
+  <div class="item item-3" fxFlex>Item 3</div>
+
+</div>
+
+<div
+     class="container"
+     fxLayout.xs="column"
+     fxLayoutAlign="center"
+     fxLayoutGap="10px"
+     fxLayoutGap.xs="0">
+  <div class="item item-4" fxFlex fxFlexOffset="50px"  fxFlexOffset.xs="0">Item 4</div>
+  <div class="item item-5" fxFlex="200px">Item 5</div>
+</div>
+
+

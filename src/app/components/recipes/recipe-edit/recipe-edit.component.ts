@@ -1,12 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder, FormControl, Validators, FormArray } from '@angular/forms';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { RecipeService } from 'src/app/service/recipe.service';
-import { Recipe } from 'src/app/model/recipe.model';
-import { Subscription, from } from 'rxjs';
-import { CustomValidators } from 'src/app/validators/custom.validators';
-import { MatDialogRef, MatDialog } from '@angular/material';
-import { ConfirmDialogComponent } from '../../shared/confirm-dialog/confirm-dialog.component';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {FormGroup, FormBuilder, FormControl, Validators, FormArray} from '@angular/forms';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {RecipeService} from 'src/app/service/recipe.service';
+import {Recipe} from 'src/app/model/recipe.model';
+import {Subscription, from} from 'rxjs';
+import {CustomValidators} from 'src/app/validators/custom.validators';
+import {MatDialogRef, MatDialog} from '@angular/material';
+import {ConfirmDialogComponent} from '../../shared/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -20,8 +20,8 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   editMode: boolean = false;
   recipe: Recipe;
   recipeRouteSubscription: Subscription;
-
   matDialogRef: MatDialogRef<ConfirmDialogComponent>;
+  loading: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -33,8 +33,8 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   }
 
   openConfirmDialog() {
-    var message = "Yemek Tarifini güncelemek istediğinize eminmisiniz."
-    this.matDialogRef = this.dialog.open(ConfirmDialogComponent, { data: message, hasBackdrop: true });
+    var message = 'Yemek Tarifini güncelemek istediğinize eminmisiniz.';
+    this.matDialogRef = this.dialog.open(ConfirmDialogComponent, {data: message, hasBackdrop: true});
   }
 
   ngOnInit() {
@@ -49,10 +49,10 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   }
 
   initForm() {
-    var recipeName = '';
-    var recipeImagePath = '';
-    var recipeDescription = '';
-    var recipeIngredients = new FormArray([]);
+    var recipeName = '',
+      recipeImagePath = '',
+      recipeDescription = '',
+      recipeIngredients = new FormArray([]);
 
     if (this.editMode && this.id >= 0) {
       recipeName = this.recipe.name;
@@ -63,12 +63,11 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
           recipeIngredients.push(
             new FormGroup({
               'name': new FormControl(igr.name, [Validators.required]),
-              'amount': new FormControl(igr.amount, [Validators.required, Validators.pattern("^[0-9]+[0-9]*$")])
+              'amount': new FormControl(igr.amount, [Validators.required, Validators.pattern('^[0-9]+[0-9]*$')])
             }));
         }
       }
     }
-
 
     this.editRecipeForm = this.fb.group({
       'name': new FormControl(recipeName, [Validators.required, CustomValidators.existsRecipeNameValid]),
@@ -80,10 +79,11 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   }
 
   getControls() {
-    return (<FormArray>this.editRecipeForm.get('ingredients')).controls;
+    return (<FormArray> this.editRecipeForm.get('ingredients')).controls;
   }
 
   onSubmit() {
+    this.loading=true;
     this.openConfirmDialog();
     this.matDialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -97,13 +97,13 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
         if (this.editMode && this.id >= 0) {
           //updated
           this.recipeService.updateRecipe(this.id, newRecipe);
-        }
-        else {
+        } else {
           //insert
           this.recipeService.addRecipe(newRecipe);
         }
         this.onCancel();
       }
+      this.loading=false;
     });
   }
 
@@ -112,15 +112,16 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   }
 
   onAddIngredients() {
-    (<FormArray>this.editRecipeForm.get("ingredients")).push(
+    (<FormArray> this.editRecipeForm.get('ingredients')).push(
       new FormGroup({
         'name': new FormControl('', Validators.required),
-        'amount': new FormControl('', [Validators.required, Validators.pattern("^[0-9]+[0-9]*$")])
+        'amount': new FormControl('', [Validators.required, Validators.pattern('^[0-9]+[0-9]*$')])
       })
     );
   }
+
   onIngredientDelete(id: number) {
-    (<FormArray>this.editRecipeForm.get("ingredients")).removeAt(id);
+    (<FormArray> this.editRecipeForm.get('ingredients')).removeAt(id);
   }
 
   onDeleteRecipe() {
@@ -128,7 +129,7 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   }
 
   onCancel() {
-    this.router.navigate(['../'], { relativeTo: this.route });
+    this.router.navigate(['../'], {relativeTo: this.route});
   }
 
 

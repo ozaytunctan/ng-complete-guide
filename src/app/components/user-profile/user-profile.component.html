@@ -1,0 +1,41 @@
+<mat-card>
+  <mat-card-header>User Profile Detail</mat-card-header>
+  <mat-card-content>
+
+<div fxLayout="row"
+     fxLayoutGap="15px"
+     >
+   <!--Profile Image-->
+  <div fxFlex="10"
+  >
+    <img
+    src="https://2.bp.blogspot.com/-knpXS5hiKjE/V_pyKmmfD7I/AAAAAAAABrM/lJlADsbQD3YIZBt75WlQFatdTbtQo733QCPcBGAYYCw/s1600/test%2B%25282%2529.jpg"
+    class="img-responsive img-rounded"
+    width="150" height="150"
+    alt="Ozay TUNCTAN">
+  </div>
+  <!--Profile Details-->
+  <div fxFlex="90"
+  >
+     <p>Adı: Ozay</p>
+        <hr>
+        <p>Soyadı: TUNCTAN</p>
+        <hr>
+        <p>Roles: [ADMIN,USER,GUEST]</p>
+        <hr>
+        <p>Permission: [READ, WRITE, READ-WRITE]</p>
+        <p>
+          <mat-slide-toggle [checked]="true" [color]="primary">Activated</mat-slide-toggle>
+        </p>
+  </div>
+</div>
+    <hr>
+    <div fxLayout="row">
+      <button mat-stroked-button color="primary">Password Change</button>
+      <button mat-stroked-button color="primary">User Edit</button>
+      <button mat-stroked-button color="primary">Logout</button>
+    </div>
+
+
+  </mat-card-content>
+</mat-card>

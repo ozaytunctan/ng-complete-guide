@@ -11,6 +11,7 @@ import { RecipeStartComponent } from './components/recipes/recipe-start/recipe-s
 import { RecipeDetailComponent } from './components/recipes/recipe-detail/recipe-detail.component';
 import { RecipeEditComponent } from './components/recipes/recipe-edit/recipe-edit.component';
 import { RecipeResolver } from './resolver/recipe.resolver';
+import {UserProfileComponent} from './components/user-profile/user-profile.component';
 
 
 // { path: 'events', loadChildren: () => import('./components/events/event.module').then(m => m.EventModule) },
@@ -37,6 +38,11 @@ const routes: Routes = [
     path: 'shopping-list',
     canActivate: [AuthenticationGuard],
     component: ShoppingListComponent
+  },
+  {
+    path:'user-profile',
+    canActivate: [AuthenticationGuard],
+    component:UserProfileComponent
   },
   {
     path: 'recipes',

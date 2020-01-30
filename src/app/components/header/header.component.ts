@@ -1,6 +1,7 @@
 import { Component, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { AuthenticationService } from 'src/app/service/authentication-service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
     selector: "app-header",
@@ -17,7 +18,10 @@ export class HeaderComponent implements OnInit ,OnDestroy{
 
     changedLoggedInSubscription:Subscription;
 
-    constructor(private auth: AuthenticationService) {
+    constructor(private auth: AuthenticationService,
+                private route:ActivatedRoute,
+                private router:Router
+    ) {
     }
     onSelect(feature: string) {
         this.featureSelected.next(feature);
@@ -38,5 +42,8 @@ export class HeaderComponent implements OnInit ,OnDestroy{
         this.changedLoggedInSubscription.unsubscribe();
     }
 
+    onProfileDetaile(){
+        this.router.navigate(['/user-profile']);
+    }
 
 }

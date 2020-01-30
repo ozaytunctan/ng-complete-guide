@@ -28,8 +28,12 @@
                     </ul>
                 </li>
                 <li>
-                    <a [routerLink]="['/login']" *ngIf="!loggedIn">Login</a>
-                    <a (click)="onLogout()"  *ngIf="loggedIn">Logout</a>
+                  <a mat-button  [matMenuTriggerFor]="menu">User Profile</a>
+                  <mat-menu #menu="matMenu">
+                    <button mat-menu-item routerLinkActive="active" [routerLink]="['/login']" *ngIf="!loggedIn">Login</button>
+                    <button mat-menu-item routerLinkActive="active"  (click)="onLogout()"  *ngIf="loggedIn">Logout</button>
+                    <button mat-menu-item routerLinkActive="active"  (click)="onProfileDetaile()"  *ngIf="loggedIn">Profile Detail</button>
+                  </mat-menu>
                 </li>
 
             </ul>

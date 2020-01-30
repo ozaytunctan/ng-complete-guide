@@ -31,6 +31,11 @@ import {RecipeService} from './service/recipe.service';
 import {AuthUserInterceptor} from 'src/interceptors/auth-user.interceptor';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {
+  MatGridListModule
+}
+from '@angular/material/grid-list';
+
+import {
   MatCardModule,
   MatTabsModule,
   MatIconModule,
@@ -40,10 +45,11 @@ import {
   MatFormFieldModule,
   MatButtonModule,
   MatButtonToggleModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule, MatMenuModule, MatSliderModule, MatSlideToggleModule, MatListModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ConfirmDialogComponent} from './components/shared/confirm-dialog/confirm-dialog.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +72,8 @@ import {ConfirmDialogComponent} from './components/shared/confirm-dialog/confirm
     CardComponent,
     ShortenPipe,
     FilterPipe,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -78,12 +85,18 @@ import {ConfirmDialogComponent} from './components/shared/confirm-dialog/confirm
     FlexLayoutModule,
     MatCardModule,
     MatTabsModule,
-    MatIconModule,
     MatDialogModule,
     MatFormFieldModule,
     MatButtonModule,
     MatButtonToggleModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatMenuModule,
+    MatGridListModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSliderModule,
+    MatListModule,
+    MatIconModule
 
 
   ],

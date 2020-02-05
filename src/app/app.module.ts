@@ -31,94 +31,105 @@ import {RecipeService} from './service/recipe.service';
 import {AuthUserInterceptor} from 'src/interceptors/auth-user.interceptor';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {
-  MatGridListModule
+    MatGridListModule
 }
-from '@angular/material/grid-list';
+    from '@angular/material/grid-list';
 
 import {
-  MatCardModule,
-  MatTabsModule,
-  MatIconModule,
-  MAT_DIALOG_DEFAULT_OPTIONS,
-  MatDialogModule,
-  MatFormField,
-  MatFormFieldModule,
-  MatButtonModule,
-  MatButtonToggleModule,
-  MatProgressSpinnerModule, MatMenuModule, MatSliderModule, MatSlideToggleModule, MatListModule
-} from '@angular/material';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ConfirmDialogComponent} from './components/shared/confirm-dialog/confirm-dialog.component';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
-
-@NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    RecipesComponent,
-    RecipeListComponent,
-    RecipeItemComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
-    RecipeEditComponent,
-    RecipeDetailComponent,
-    LoginComponent,
-    HomeComponent,
-    PageNotFoundComponent,
-    TextHighLight,
-    ShowDirective,
-    DropdownDirective,
-    RecipeStartComponent,
-    CardComponent,
-    ShortenPipe,
-    FilterPipe,
-    ConfirmDialogComponent,
-    UserProfileComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    FlexLayoutModule,
     MatCardModule,
     MatTabsModule,
+    MatIconModule,
+    MAT_DIALOG_DEFAULT_OPTIONS,
     MatDialogModule,
+    MatFormField,
     MatFormFieldModule,
     MatButtonModule,
     MatButtonToggleModule,
     MatProgressSpinnerModule,
     MatMenuModule,
-    MatGridListModule,
     MatSliderModule,
     MatSlideToggleModule,
-    MatSliderModule,
     MatListModule,
-    MatIconModule
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule, MatInputModule
+} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ConfirmDialogComponent} from './components/shared/confirm-dialog/confirm-dialog.component';
+import {UserProfileComponent} from './components/user-profile/user-profile.component';
+
+@NgModule({
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        RecipesComponent,
+        RecipeListComponent,
+        RecipeItemComponent,
+        ShoppingListComponent,
+        ShoppingEditComponent,
+        RecipeEditComponent,
+        RecipeDetailComponent,
+        LoginComponent,
+        HomeComponent,
+        PageNotFoundComponent,
+        TextHighLight,
+        ShowDirective,
+        DropdownDirective,
+        RecipeStartComponent,
+        CardComponent,
+        ShortenPipe,
+        FilterPipe,
+        ConfirmDialogComponent,
+        UserProfileComponent
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+        FlexLayoutModule,
+        MatCardModule,
+        MatTabsModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatButtonToggleModule,
+        MatProgressSpinnerModule,
+        MatMenuModule,
+        MatGridListModule,
+        MatSliderModule,
+        MatSlideToggleModule,
+        MatSliderModule,
+        MatListModule,
+        MatIconModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatInputModule
 
 
-  ],
+    ],
 
-  entryComponents: [
-    ConfirmDialogComponent
-  ],
-  providers: [
-    AuthenticationService,
-    AuthenticationGuard,
-    RecipeResolver,
-    ServiceAsync,
-    RecipeService,
-    ShoppingListService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthUserInterceptor,
-      multi: true
-    },
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
-  ],
-  bootstrap: [AppComponent]
+    entryComponents: [
+        ConfirmDialogComponent
+    ],
+    providers: [
+        AuthenticationService,
+        AuthenticationGuard,
+        RecipeResolver,
+        ServiceAsync,
+        RecipeService,
+        ShoppingListService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthUserInterceptor,
+            multi: true
+        },
+        {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }

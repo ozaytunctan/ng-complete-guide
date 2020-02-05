@@ -7,6 +7,7 @@ import { PipeTransform, Pipe } from '@angular/core';
 export class FilterPipe implements PipeTransform {
 
     transform(value: any, filterStr: string, propName: string): any {
+        debugger;
         if (filterStr==undefined || filterStr=='') {
             return value;
         }

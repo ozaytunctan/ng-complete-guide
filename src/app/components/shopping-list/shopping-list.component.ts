@@ -59,21 +59,11 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     }
 
     public applyFilter(filterStr:any,propName:any) {
-
-        var value = this.dataSource.data;
-
         if (filterStr == undefined || filterStr == '') {
             this.dataSource.data=this.data;
             return;
         }
-
-        const resultArray = [];
-        for (const item of value) {
-            if (item[propName].toLowerCase().indexOf(filterStr.toLowerCase()) >= 0) {
-                resultArray.push(item);
-            }
-        }
-        this.dataSource.data = resultArray;
+      this.dataSource.data=  this.dataSource.data.filter(item=>item[propName].toLowerCase().indexOf(filterStr.toLowerCase()) >= 0);
 
     }
 }
